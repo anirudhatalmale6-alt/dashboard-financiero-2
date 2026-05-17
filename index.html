@@ -5252,7 +5252,9 @@ function extractCuotasData(vendorFilter,useEmpresas){
     cobrarUniPesos.push(useUniPesosIdx>=0?getVal(uniP[useUniPesosIdx],m):0);
   }
   var compromisosPagos=[];
-  if(cronGastosAPagar&&cronGastosAPagar.length>=12){
+  if(cronCompromisosAPagar&&cronCompromisosAPagar.length>=12){
+    for(var m=0;m<12;m++){compromisosPagos.push(cronCompromisosAPagar[m]||0);}
+  }else if(cronGastosAPagar&&cronGastosAPagar.length>=12){
     for(var m=0;m<12;m++){compromisosPagos.push(cronGastosAPagar[m]||0);}
   }else{for(var m=0;m<12;m++)compromisosPagos.push(0);}
   return{labels:labels,cobrarUSD:cobrarUSD,pagarUSD:pagarUSD,cobrarPesos:cobrarPesos,pagarPesos:pagarPesos,gastosPesos:gastosPesos,gastosUSD:gastosUSD,cotizacion:cotizacion,unifiedIncome:unifiedIncome,unifiedExpenses:unifiedExpenses,deudasMensuales:deudasMensuales,vendors:vendorsList,cobrarUniUSD:cobrarUniUSD,cobrarUniPesos:cobrarUniPesos,compromisosPagos:compromisosPagos};
